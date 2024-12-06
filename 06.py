@@ -42,11 +42,10 @@ def posCanMakeLoop(startPos, dir):
             curDirectionIndex = (curDirectionIndex + 1) % len(NEXTPOS)
 
 
-obstructionPosition = set()
-
 # part 1 and 2
 visited = set()
-visited.add((guardPosition[0], guardPosition[1]))
+visited.add(tuple(guardPosition))
+obstructionPosition = set()
 while True:
     nextPos = [guardPosition[0] + NEXTPOS[curDirectionIndex][0], guardPosition[1] + NEXTPOS[curDirectionIndex][1]]
     if nextPos[0] < 0 or nextPos[0] >= len(lines[0]) or nextPos[1] < 0 or nextPos[1] >= len(lines):  # move takes us off the map
