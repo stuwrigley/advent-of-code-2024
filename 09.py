@@ -39,6 +39,7 @@ for count, char in enumerate(lines[0]):
 
 part2Disk = disk[:]
 
+# part 1
 endPoint = len(disk) - 1
 for count, block in enumerate(disk):
     if count == endPoint:
@@ -50,6 +51,7 @@ for count, block in enumerate(disk):
         disk[endPoint] = None
 print("Part 1 answer:", checksum(disk))
 
+# part 2
 for (filePosition, fileSize, fileID) in reversed(files):
     for spaceCount, (spacePosition, spaceSize) in enumerate(spaces):
         if spacePosition < filePosition and fileSize <= spaceSize:
