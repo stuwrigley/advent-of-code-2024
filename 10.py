@@ -26,15 +26,15 @@ for row in range(numRows):
             nextSteps = deque([(row, col)])
             visited = set()
             while nextSteps:
-                r, c = nextSteps.popleft()
-                if (r, c) in visited:
+                thisRow, thisCol = nextSteps.popleft()
+                if (thisRow, thisCol) in visited:
                     continue
-                visited.add((r, c))
-                if map[r][c] == 9:
+                visited.add((thisRow, thisCol))
+                if map[thisRow][thisCol] == 9:
                     trailheadScores += 1
                 for rowDelta, colDelta in NEXTPOS:
-                    nextRow, nextCol = r + rowDelta, c + colDelta
-                    if 0 <= nextRow < numRows and 0 <= nextCol < numCols and map[nextRow][nextCol] == map[r][c] + 1:
+                    nextRow, nextCol = thisRow + rowDelta, thisCol + colDelta
+                    if 0 <= nextRow < numRows and 0 <= nextCol < numCols and map[nextRow][nextCol] == map[thisRow][thisCol] + 1:
                         nextSteps.append((nextRow, nextCol))
 print("Part 1 answer:", trailheadScores)
 
