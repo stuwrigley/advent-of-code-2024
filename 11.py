@@ -31,21 +31,20 @@ print("Part 1 answer:", len(stones))
 
 
 def blinkAtSingleStone(stone, blinks):
-    if (stone, blinks) in previousStoneStates:
-        return previousStoneStates[(stone, blinks)]
-    if blinks == 0:
-        previousStoneStates[(stone, blinks)] = 1
-    elif stone == 0:
-        previousStoneStates[(stone, blinks)] = blinkAtSingleStone(1, blinks - 1)
-    elif len(str(stone)) % 2 == 0:
-        stoneStr = str(stone)
-        previousStoneStates[(stone, blinks)] = blinkAtSingleStone(int(stoneStr[:len(stoneStr) // 2]), blinks - 1) + blinkAtSingleStone(int(stoneStr[len(stoneStr) // 2:]), blinks - 1)
-    else:
-        previousStoneStates[(stone, blinks)] = blinkAtSingleStone(stone * 2024, blinks - 1)
+    if (stone, blinks) not in previousStoneStates:
+        if blinks == 0:
+            previousStoneStates[(stone, blinks)] = 1
+        elif stone == 0:
+            previousStoneStates[(stone, blinks)] = blinkAtSingleStone(1, blinks - 1)
+        elif len(str(stone)) % 2 == 0:
+            stoneStr = str(stone)
+            previousStoneStates[(stone, blinks)] = blinkAtSingleStone(int(stoneStr[:len(stoneStr) // 2]), blinks - 1) + blinkAtSingleStone(int(stoneStr[len(stoneStr) // 2:]), blinks - 1)
+        else:
+            previousStoneStates[(stone, blinks)] = blinkAtSingleStone(stone * 2024, blinks - 1)
     return previousStoneStates[(stone, blinks)]
 
 
-# part 2
+# part 2... part 1 brute force approach won't work... need to be smarter!
 previousStoneStates = {}
 numStones = 0
 numBlinks = 75
