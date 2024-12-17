@@ -31,7 +31,7 @@ def getComboOperand(operand, A, B, C):
     return comboOperand
 
 
-def runProgram(A, B, C, program, part2):
+def runProgram(A, B, C, program):
     output = ""
     instructionPointer = 0
     while instructionPointer < len(program) - 1:
@@ -64,7 +64,7 @@ def runProgram(A, B, C, program, part2):
 
 
 # part 1
-print("Part 1 answer:", runProgram(A, B, C, program, False))
+print("Part 1 answer:", runProgram(A, B, C, program))
 
 # part 2
 
@@ -77,7 +77,7 @@ if TEST:
 for possibleA in range(20000000000):
     if possibleA == A:
         continue
-    output = runProgram(possibleA, B, C, program, True)
+    output = runProgram(possibleA, B, C, program)
     if [int(x) for x in output.split(",")] == program:
         print("Part 2 answer:", possibleA)
         break
